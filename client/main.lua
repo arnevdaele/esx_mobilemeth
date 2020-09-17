@@ -47,7 +47,11 @@ Citizen.CreateThread(function()
                 if gotMessage then
                     DrawText3D(Config.getVehicle.x, Config.getVehicle.y, Config.getVehicle.z+0.15, '~g~E~w~ - Yes / ~r~G~w~ - No')
                     if IsControlJustPressed(0, Keys["E"]) then
-                        spawnVehicle()
+                        if ESX.Game.IsSpawnPointClear(Config.spawnLocation, 1) then
+                            spawnVehicle()
+                        else
+                            ESX.ShowNotification('Something is blocking the spawnpoint...')
+                        end
                     elseif IsControlJustPressed(0, Keys["G"]) then
                         ESX.ShowNotification('Thats too bad, hope to see you again.')
                         Citizen.Wait(1000)
