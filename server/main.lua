@@ -25,10 +25,19 @@ AddEventHandler('esx_mobilemeth:server:giveMeth', function()
     local sourcePlayer = ESX.GetPlayerFromId(source)
     local amount = math.random(2, 5)
     
-    if sourcePlayer.canCarryItem('methbag', amount) then
-        sourcePlayer.addInventoryItem('methbag', amount)
+    if Config.usingWeight then
+        if sourcePlayer.canCarryItem('methbag', amount) then
+            sourcePlayer.addInventoryItem('methbag', amount)
+        else
+            sourcePlayer.showNotification("You can't carry this amount of bags...")
+        end
     else
-        sourcePlayer.showNotification("You can't carry this amount of bags...")
+        local sourceItem = xPlayer.getInventoryItem('methbag')
+        if sourceItem.limit ~= -1 and (sourceItem.count + ItemCount) > sourceItem.limit then
+            sourcePlayer.showNotification("You can't carry any more methbags...")
+        else
+            sourcePlayer.addInventoryItem('methbag', amount)
+        end
     end
 end)
 
