@@ -14,6 +14,7 @@ Insert the .sql file in your database and move the images in 'INVENTORYHUD IMAGE
 Drag and drop this resource in your ESX folder and start it using ```ensure esx_mobilemeth``` in your server.cfg.
 
 # CONFIGURATION OPTIONS
+```Config.usingWeight``` set to true when using ESX weight system, false when using ESX limit system
 ```Config.requiredCops``` defines how many cops need to be connected to be able to use this method
 
 ```Config.producingTimeout``` defines the timeout between giving bags
