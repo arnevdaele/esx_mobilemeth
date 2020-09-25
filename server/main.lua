@@ -33,7 +33,7 @@ AddEventHandler('esx_mobilemeth:server:giveMeth', function()
         end
     else
         local sourceItem = sourcePlayer.getInventoryItem('methbag')
-        if sourceItem.limit ~= -1 and (sourceItem.count + amount) > sourceItem.limit then
+        if sourceItem.limit ~= -1 and (sourcePlayer.getInventoryItem('methbag').count + amount) > sourceItem.limit then
             sourcePlayer.showNotification("You can't carry any more methbags...")
         else
             sourcePlayer.addInventoryItem('methbag', amount)
